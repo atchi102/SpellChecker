@@ -41,7 +41,7 @@ def SpellCheck(contents, filename):
 
 
 #Directory of the text file essays
-directory = "/Users/abigailatchison/Desktop/MLAT/RTFProcessing/EssaysTxt/"
+directory = "/Users/abigailatchison/Desktop/MLAT/RTFProcessing/EssaysTxt"
 
 #Open a file to place percentages in a text file
 storePercent = open(os.path.join(directory + "/Output", "stats.txt"),'r')
