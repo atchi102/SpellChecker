@@ -71,10 +71,10 @@ for filename in os.listdir(directory):
         print("Total words: " + str(results['numWords']))
         print("Total errors: " + str(results['errors']))
         if results['numWords'] == 0:
-            print("Percentage errors: " + "0.0"))
+            print("Percentage errors: " + "0.0")
             #Write percentages to document and save file
             storePercent = open(os.path.join(directory + "/Output", "stats.txt"),'a')
-            storePercent.write("\n" + filename + " :: " + "0.0"))
+            storePercent.write("\n" + filename + " :: " + "0.0")
             storePercent.close()
         else:
             print("Percentage errors: " + str(results['errors']/results['numWords']))
