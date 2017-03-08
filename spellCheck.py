@@ -48,7 +48,7 @@ storePercent = open(os.path.join(directory + "/Output", "stats.txt"),'r')
 statsContent = storePercent.read()
 storePercent.close()
 
-storePercent = open(os.path.join(directory + "/Output", "stats.txt"),'a')
+
 #Loop through all text files
 for filename in os.listdir(directory):
 
@@ -70,15 +70,22 @@ for filename in os.listdir(directory):
 
         print("Total words: " + str(results['numWords']))
         print("Total errors: " + str(results['errors']))
-        print("Percentage errors: " + str(results['errors']/results['numWords']))
+        if results['numWords'] == 0:
+            print("Percentage errors: " + "0.0"))
+            #Write percentages to document and save file
+            storePercent = open(os.path.join(directory + "/Output", "stats.txt"),'a')
+            storePercent.write("\n" + filename + " :: " + "0.0"))
+            storePercent.close()
+        else:
+            print("Percentage errors: " + str(results['errors']/results['numWords']))
+            #Write percentages to document and save file
+            storePercent = open(os.path.join(directory + "/Output", "stats.txt"),'a')
+            storePercent.write("\n" + filename + " :: " + str(results['errors']/results['numWords']))
+            storePercent.close()
 
 
-        #Write percentages to document and save file
-        storePercent.write("\n" + filename + " :: " + str(results['errors']/results['numWords']))
 
 
         continue
     else:
         continue
-
-storePercent.close(   )
