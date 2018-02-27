@@ -18,14 +18,14 @@ public class rtfparser{
   {
     // URL location = rtfparser.class.getProtectionDomain().getCodeSource().getLocation();
     // System.out.println(location.getFile());
-    String myDirectoryPath = "/Users/abigailatchison/Desktop/MLAT/RTFProcessing/Essays";
+    String myDirectoryPath = "/Users/abigailatchison/Documents/MLAT/Health_Essay/full_essays";
     File dir = new File(myDirectoryPath);
     File[] directoryListing = dir.listFiles();
     if (directoryListing != null) {
     for (File child : directoryListing) {
       String filename = child.getName();
       System.out.println(filename);
-      writetxt(readrtf("/Users/abigailatchison/Desktop/MLAT/RTFProcessing/Essays/"+filename), filename.substring(0,filename.length()-4)+".txt");
+      writetxt(readrtf("/Users/abigailatchison/Documents/MLAT/Health_Essay/full_essays/"+filename), filename.substring(0,filename.length()-4)+".txt");
     }
     } else {
     // Handle the case where dir is not really a directory.

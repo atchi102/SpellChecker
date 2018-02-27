@@ -27,11 +27,16 @@ def SpellCheck(contents, filename):
     d = enchant.Dict("en_US")
     for err in newChkr:
         print("ERROR: " + err.word)
-        print(d.suggest(err.word))
+        suggestions = d.suggest(err.word)
+        print(suggestions)
         replaceWith = raw_input('Enter correction: ')
         #If user input is a "y" then keep the word otherwise change
         if replaceWith!="y":
-            contents = contents.replace(str(err.word),str(replaceWith))
+            try:
+                replacenum = int(replaceWith)
+                contents = contents.replace(str(err.word),str(suggestions[replacenum-1]))
+            except ValueError:
+                contents = contents.replace(str(err.word),str(replaceWith))
             count+=1
 
     #Number of words in the text file
@@ -41,20 +46,22 @@ def SpellCheck(contents, filename):
 
 
 #Directory of the text file essays
-directory = "/Users/abigailatchison/Desktop/MLAT/RTFProcessing/EssaysTxt"
+directory = "/Users/abigailatchison/Documents/MLAT/Health_Essay/full_essays"
 
 #Open a file to place percentages in a text file
+print "something is happening"
 storePercent = open(os.path.join(directory + "/Output", "stats.txt"),'r')
 statsContent = storePercent.read()
 storePercent.close()
+print statsContent
 
 
 #Loop through all text files
 for filename in os.listdir(directory):
 
-
     if filename.endswith(".txt"):
         if filename in statsContent:
+            print filename + "FOUND IN"
             continue;
         #Open text file and read in contents
         f = open(os.path.join(directory, filename), 'r')
